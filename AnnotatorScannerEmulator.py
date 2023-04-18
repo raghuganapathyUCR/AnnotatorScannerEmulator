@@ -1,6 +1,6 @@
 import wget
 import os
-class AnnotatorPluginEmulator:
+class AnnotatorScannerEmulator:
     def getJarFileFromNet(self, url, path):
         # download the jar file
         try:
