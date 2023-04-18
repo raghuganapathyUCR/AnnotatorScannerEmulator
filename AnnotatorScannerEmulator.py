@@ -41,7 +41,7 @@ class AnnotatorScannerEmulator:
 
     
 if __name__ == "__main__":
-    a = AnnotatorPluginEmulator()
+    a = AnnotatorScannerEmulator()
     # Jar Metadata
     jarUrl = "https://repo.maven.apache.org/maven2/edu/ucr/cs/riple/annotator/annotator-core/1.3.6/annotator-core-1.3.6.jar"
     jarName = "annotator-core-1.3.6.jar"
