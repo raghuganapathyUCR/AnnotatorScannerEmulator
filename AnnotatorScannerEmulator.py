@@ -43,7 +43,7 @@ class AnnotatorScannerEmulator:
         return True
 
     def runAnnotator(self):
-        buildCommand = "java -jar " + self.pathToJar + " --build-command " + "cd {} && ./gradlew build -x test".format(self.pathToTargetProject)
+        buildCommand = "java -jar " + self.pathToJar + " -d /Users/raghuganapathy/Desktop/Masters Project/Python Scripts/out " + " -i com.example.Initializer " + " --build-command " + "cd {} && ./gradlew build -x test".format(self.pathToTargetProject)
         print("\n")
         print(buildCommand)
     
