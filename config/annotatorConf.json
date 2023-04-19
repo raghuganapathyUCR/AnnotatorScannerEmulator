@@ -1,0 +1,38 @@
+{
+    "BUILD_COMMAND": "cd /path/to/target && command to run javac with analysis (e.g. ./gradlew :p:compileJava)",
+    "ANNOTATION": {
+      "INITIALIZER": "com.example.Initializer",
+      "NULLABLE": "javax.annotation.Nullable",
+      "NULL_UNMARKED": "com.example.NullUnmarked",
+      "NONNULL": [
+          "com.example.Nonnull"
+      ]
+    },
+    "OUTPUT_DIR": "/tmp/NullAwayFix",
+    "CHAIN": false,
+    "PARALLEL_PROCESSING": true,
+    "CACHE_IMPACT_ACTIVATION": false,
+    "CACHE": true,
+    "BAILOUT": true,
+    "REDIRECT_BUILD_OUTPUT_TO_STDERR": false,
+    "EXHAUSTIVE_SEARCH": false,
+    "OUTER_LOOP": true,
+    "CONFIG_PATHS": [
+      {
+        "NULLAWAY": "path_to_nullaway_config.xml",
+        "SCANNER": "path_to_scanner_config.xml"
+      }
+    ],
+    "PROCESSORS": {
+      "LOMBOK": true
+    },
+    "DEPTH": 1,
+    "DOWNSTREAM_DEPENDENCY": {
+      "ACTIVATION":true,
+      "BUILD_COMMAND": "cd /path/to/dependencies && command to run javac with analysis (e.g. ./gradlew :p:compileJava)",
+      "LIBRARY_MODEL_LOADER_PATH": "path to nullaway library model loader jar",
+      "ANALYSIS_MODE": "default"
+    },
+    "FORCE_RESOLVE": false,
+    "INFERENCE_ACTIVATION": true
+  }
