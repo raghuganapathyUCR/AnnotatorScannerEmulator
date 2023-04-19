@@ -1,6 +1,8 @@
 import wget
 import os
 class AnnotatorScannerEmulator:
+    def __init__(self, pathToTargetProject):
+        self.pathToTargetProject = pathToTargetProject
     def getJarFileFromNet(self, url, path):
         # download the jar file
         try:
@@ -11,7 +13,8 @@ class AnnotatorScannerEmulator:
                 os.mkdir("./temp")
             else:
                 path = "./temp/"+path
-
+                # Add the path to object
+                self.pathToJar = path   
                 # Folder exists, Check if the file already exists
                 if(os.path.exists(path)):
                     print("File already exists")
@@ -39,11 +42,21 @@ class AnnotatorScannerEmulator:
         # If we got here, the file was downloaded successfully
         return True
 
+    def runAnnotator(self):
+        buildCommand = "java -jar " + self.pathToJar + " --build-command " + "cd {} && ./gradlew build -x test".format(self.pathToTargetProject)
+        print("\n")
+        print(buildCommand)
     
 if __name__ == "__main__":
-    a = AnnotatorScannerEmulator()
+
+    pathToTargetProject = "/Users/raghuganapathy/Desktop/JavaProjects/exttemp"
+
+    a = AnnotatorScannerEmulator(pathToTargetProject=pathToTargetProject)
     # Jar Metadata
     jarUrl = "https://repo.maven.apache.org/maven2/edu/ucr/cs/riple/annotator/annotator-core/1.3.6/annotator-core-1.3.6.jar"
     jarName = "annotator-core-1.3.6.jar"
     # Download the jar file and store it in the temp folder
     a.getJarFileFromNet(jarUrl, jarName)
+
+    # Run the annotator
+    a.runAnnotator()
