@@ -52,7 +52,8 @@ class AnnotatorScannerEmulator:
         buildCommand = "java -jar " + self.pathToJar + " -d \"/Users/raghuganapathy/Desktop/temp/PythonScripts/out\" " + "-cp \"/Users/raghuganapathy/Desktop/temp/PythonScripts/config/paths.tsv\""  " -i com.example.Initializer " + " --build-command " + "\"cd {} && ./gradlew build -x test\"".format(self.pathToTargetProject) \
         
         print("\n")
-        print(buildCommand)
+        # print(buildCommand)
+        os.system(buildCommand)
     
 if __name__ == "__main__":
 
