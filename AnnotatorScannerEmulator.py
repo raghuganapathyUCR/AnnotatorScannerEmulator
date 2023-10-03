@@ -17,7 +17,7 @@ class AnnotatorScannerEmulator:
                 self.pathToJar = path   
                 # Folder exists, Check if the file already exists
                 if(os.path.exists(path)):
-                    print("File already exists")
+                    print("JAR already exists")
                     return True 
                 print("Temp folder already exists")
             # Update the path
@@ -50,21 +50,21 @@ class AnnotatorScannerEmulator:
             f.write(f"{pathToNullAway}\t{pathToAnnotator}\n")
     def runAnnotator(self):
         buildCommand = "java -jar " + self.pathToJar + " -d \"/Users/raghuganapathy/Desktop/temp/PythonScripts/out\" " + "-cp \"/Users/raghuganapathy/Desktop/temp/PythonScripts/config/paths.tsv\""  " -i com.example.Initializer " + " --build-command " + "\"cd {} && ./gradlew build -x test\"".format(self.pathToTargetProject) \
-        
+        + " -cn NULLAWAY"
         print("\n")
         # print(buildCommand)
         os.system(buildCommand)
     
 if __name__ == "__main__":
 
-    pathToTargetProject = "/Users/raghuganapathy/Desktop/JavaProjects/exttemp"
+    pathToTargetProject = "/Users/raghuganapathy/Desktop/micronaut-starter"
     pathToNullAway = "/Users/raghuganapathy/Desktop/temp/PythonScripts/config/nullaway.xml"
     pathToAnnotator = "/Users/raghuganapathy/Desktop/temp/PythonScripts/config/scanner.xml"
 
     a = AnnotatorScannerEmulator(pathToTargetProject=pathToTargetProject)
     # Jar Metadata
-    jarUrl = "https://repo.maven.apache.org/maven2/edu/ucr/cs/riple/annotator/annotator-core/1.3.6/annotator-core-1.3.6.jar"
-    jarName = "annotator-core-1.3.6.jar"
+    jarUrl = "https://repo.maven.apache.org/maven2/edu/ucr/cs/riple/annotator/annotator-core/1.3.8/annotator-core-1.3.8.jar"
+    jarName = "annotator-core-1.3.8.jar"
     # Download the jar file and store it in the temp folder
     a.getJarFileFromNet(jarUrl, jarName)
     a.buildTsvFile(pathToNullAway, pathToAnnotator)
